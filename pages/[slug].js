@@ -1,5 +1,21 @@
+import Head from 'next/head'
+import Link from 'next/link'
+
+export const config = { amp: true }
+
 export default function Article({ post }) {
-  return <h1>{post.title}</h1>
+  return (
+    <>
+      <Head>
+        <title>{post.title} - Portal R7</title>
+        <link href="/favicon.png" rel="shortcut icon" />
+      </Head>
+
+      <h1>{post.title}</h1>
+
+      <Link href="/">Voltar</Link>
+    </>
+  )
 }
 
 export async function getServerSideProps(context) {
