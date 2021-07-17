@@ -11,15 +11,13 @@ export default function Home({ posts }) {
         <link href="/favicon.png" rel="shortcut icon" />
       </Head>
 
-      <main className="container mx-auto">
-        <div className="block md:grid md:grid-cols-2 md:gap-5 lg:grid-cols-3">
-          {posts.map(({ id, title }) => (
-            <div key={id}>
-              <Link href={`/${id}`}>{title}</Link>
-            </div>
-          ))}
-        </div>
-      </main>
+      <ul>
+        {posts.map(({ id, title }) => (
+          <li key={id}>
+            <Link href={`/${id}`}>{title}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   )
 }
