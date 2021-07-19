@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import global from '../styles/global'
 
 export const config = { amp: true }
 
@@ -22,12 +22,12 @@ export default function Home({ posts }) {
 
         <main>
           <div className="cards">
-            {posts.map(({ id, title, description, cover_image: image }) => (
+            {posts.map(({ id, title, cover_image: image }) => (
               <div key={id} className="card">
                 <a href={`/${id}`} title={`Acesse: ${title}`} className="card__link">
                   <amp-img
                     alt={`Foto: ${title}`}
-                    src={image}
+                    src={`${image}?dimensions=760x432`}
                     width="760"
                     height="432"
                     layout="responsive"
@@ -36,8 +36,6 @@ export default function Home({ posts }) {
 
                   <h2 className="card__title">{title}</h2>
                 </a>
-
-                {/* <Link href={`/${id}`} className="card__description">{description}</Link> */}
               </div>
             ))}
           </div>
@@ -45,31 +43,7 @@ export default function Home({ posts }) {
       </div>
 
       <style jsx>{`
-        *, *::before, *::after {
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-
-          font-family: 'Roboto', sans-serif;
-        }
-
-        .container {
-          display: block;
-          width: 100%;
-        }
-
-        @media screen and (min-width: 768px) {
-          .container {
-            margin: 0 auto;
-            width: 768px;
-          }
-        }
-
-        @media screen and (min-width: 1200px) {
-          .container {
-            width: 1200px;
-          }
-        }
+        ${global}
 
         .header {
           margin-bottom: 28px;
