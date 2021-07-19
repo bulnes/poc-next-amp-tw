@@ -20,10 +20,9 @@ export default function Article({ post }) {
 
 export async function getServerSideProps(context) {
   const { slug } = context.params;
-  const res = await fetch(`https://cms-media-api.r7.com/article/${slug}`)
-  const post = await res.json()
+  const res = await fetch(`https://cms-media-api.r7.com/article/${slug}`);
 
-  if (!post) {
+  if (Number(res.status) !== 200) {
     return {
       redirect: {
         destination: '/',
@@ -34,7 +33,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      post,
+      post: await res.json(),
     },
   }
 }
