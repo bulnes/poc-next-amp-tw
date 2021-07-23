@@ -1,8 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
-
-import global from '../styles/global'
-
 export const config = { amp: true }
 
 export default function Article({ post }) {
