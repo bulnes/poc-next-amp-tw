@@ -2,19 +2,30 @@
   "name": "poc-next-amp-tw",
   "version": "0.1.0",
   "private": true,
+  "watch": {
+      "build-css": "{pages,styles}/*.js"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "build-css": "CSS_ENV=build postcss styles/index.css --config postcss.config.js -o styles/output.css",
+    "start": "next start",
+    "watch": "npm-watch"
   },
   "dependencies": {
     "next": "11.0.1",
+    "raw-loader": "^4.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "autoprefixer": "^10.3.1",
-    "postcss": "^8.3.5",
+    "cssnano": "^5.0.7",
+    "npm-watch": "^0.10.0",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^2.2.4"
   }
 }
