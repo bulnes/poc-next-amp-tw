@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import global from '../styles/global'
-
 export const config = { amp: true }
 
 export default function Home({ posts }) {
@@ -15,26 +14,26 @@ export default function Home({ posts }) {
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"></link>
       </Head>
 
-      <div className="container">
-        <header className="header">
-          <h1 className="header__title">Últimas notícias</h1>
+      <div className="container max-w-screen-xl">
+        <header className="p-2 mb-8">
+          <h1 className=" text-5xl  text-title font-light leading-normal text-center ">Últimas notícias</h1>
         </header>
 
         <main>
-          <div className="cards">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-8  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-10 ">
             {posts.map(({ id, title, cover_image: image }) => (
-              <div key={id} className="card">
-                <a href={`/${id}`} title={`Acesse: ${title}`} className="card__link">
+              <div key={id} className="block mb-7 bg-cards-bg border border-cards-border">
+                <a href={`/${id}`} title={`Acesse: ${title}`} className="no-underline">
                   <amp-img
                     alt={`Foto: ${title}`}
                     src={`${image}?dimensions=760x432`}
                     width="760"
                     height="432"
                     layout="responsive"
-                    className="card__image"
+                    className="mb-4"
                   ></amp-img>
 
-                  <h2 className="card__title">{title}</h2>
+                  <h2 className="text-lg font-bold  text-primary cursor-pointer leading-7 px-3 pb-2">{title}</h2>
                 </a>
               </div>
             ))}
@@ -45,72 +44,8 @@ export default function Home({ posts }) {
       <style jsx>{`
         ${global}
 
-        .header {
-          margin-bottom: 28px;
-          padding: 10px 0;
-        }
-
-        .header__title {
-          font-size: 52px;
-          font-weight: 300;
-          font-style: normal;
-          font-stretch: normal;
-          line-height: normal;
-          letter-spacing: 2px;
-          color: #218EE1;
-          text-align: center;
-        }
-
-        .cards {
-          display: block;
-          margin-bottom: 28px;
-          padding: 0 10px;
-        }
-
-        @media screen and (min-width: 768px) {
-          .cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
-            padding: 0;
-          }
-        }
-
-        @media screen and (min-width: 1200px) {
-          .cards {
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-          }
-        }
-
-        .card {
-          background-color: #ecf0f1;
-          border: 1px solid #bdc3c7;
-          border-radius: 5px;
-          overflow: hidden;
-          margin-bottom: 28px
-        }
-
-        @media screen and (min-width: 768px) {
-          .card {
-            margin-bottom: 0;
-          }
-        }
-
-        .card__link {
-          text-decoration: none;
-        }
-        
-        .card__image {
-          margin-bottom: 16px;
-        }
-
-        .card__title {
-          cursor: pointer;
-          font-size: 1.125rem;
-          line-height: 1.75rem;
-          color: #2c3e50;
+        body {
           margin: 0;
-          padding: 0 10px 10px;
         }
       `}</style>
     </>

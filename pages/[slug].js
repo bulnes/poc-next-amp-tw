@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import global from '../styles/global'
+
 export const config = { amp: true }
 
 export default function Article({ post }) {
@@ -13,12 +15,12 @@ export default function Article({ post }) {
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"></link>
       </Head>
 
-      <div className="container">
-        <article className="article">
-          <header className="article__header">
+      <div className="container ">
+        <article className="article max-w-screen-sm mx-auto ">
+          <header className="article__header mb-7 pt-2 px-2 ">
             <a href="/" title="Voltar" className="article__comeback">Voltar</a>
 
-            <h1 className="article__title">{post.title}</h1>
+            <h1 className="article__title text-3xl leading-9 text-primary font-bold">{post.title}</h1>
             <h2 className="article__subtitle">{post.subtitle}</h2>
           </header>
 
@@ -43,17 +45,6 @@ export default function Article({ post }) {
 
       <style jsx>{`
         ${global}
-
-        .article {
-          color: #333;
-          margin: 0 auto;
-          max-width: 600px;
-        }
-
-        .article__header {
-          margin-bottom: 28px;
-          padding: 10px 10px 0;
-        }
 
         .article__title {
           font-size: 1.875rem;
